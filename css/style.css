@@ -33,3 +33,8 @@ td {
     width: 60px;
     border-radius: 6px;
 }
+
+.clicked-Cell{
+    background-color: red;
+    
+}

@@ -1,8 +1,8 @@
 'use strict'
 
-const MINE = '💣' 
+const MINE = '💣'
 const NUMBER = '0'
-const FLAG = '⛳' 
+const FLAG = '⛳'
 const EMPTY = ''
 
 
@@ -53,7 +53,7 @@ function buildBoard() {
             // setMinesNegsCount(board, board.location.i, board.location.j)
         }
     }
-    console.log(board);
+    // console.log(board);
     return board
 }
 
@@ -62,3 +62,34 @@ function buildBoard() {
 // //     gLevel.SIZE = boardSize
 // //     init()
 // // }
+
+
+function clickedCell(elBtn, i, j) {
+
+
+    console.log(elBtn.id);
+    console.log(elBtn.classList.contains('cell'));
+    console.log(elBtn.innerHTML);
+    // console.log(i);
+    // console.log(j);
+    var elCellClicked = elBtn
+    var currCellContent
+    // var elCellClicked = document.querySelector('.cell')
+
+    // console.log('Doing It!', elCellClicked)
+    // console.log('elCellClicked!', elCellClicked)
+    // console.log('gBoard', gBoard[0][2])
+
+    // elCellClicked.style.display = 'none'
+    // elCellClicked.style.backgroundColor = 'red'
+    elCellClicked.classList.toggle('clicked-Cell');
+    currCellContent = elCellClicked.innerText
+    // console.log(currCellContent)
+    elCellClicked.innerText = currCellContent
+
+    // elCellClicked.classList.add('clicked-Cell');
+    // elCellClicked.innerText = ''
+
+    // renderCell(location, value)
+}
+

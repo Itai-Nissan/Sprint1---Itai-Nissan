@@ -6,27 +6,26 @@ function renderBoard(mat, selector) {
   for (var i = 0; i < mat.length; i++) {
     strHTML += '<tr>';
     for (var j = 0; j < mat[0].length; j++) {
-      var cell = mat[i][j];
-      var className = 'cell cell-' + i + '-' + j;
-      strHTML += '<td onClick="' + cell + '"' + ' class="' + className + '"> ' + cell + ' </td>'
+      var cell = mat[i][j]
+      var className = 'cell cell-' + i + '-' + j
+      strHTML += '<td onClick="clickedCell(this)" id=' + i + '-' + j + '' + ' class="' + className + '"> ' + cell + ' </td>'
+      renderCell({i:i,j:j}, cell)
     }
     strHTML += '</tr>'
   }
   strHTML += '</tbody></table>';
   var elContainer = document.querySelector(selector)
   elContainer.innerHTML = strHTML
+  
   // console.log(elContainer);
 }
 
 // location such as: {i: 2, j: 7}
 function renderCell(location, value) {
-  // console.log(location);
-  // console.log(value);
-  // Select the elCell and set the value
   var elCell = document.querySelectorAll(`.cell-${location.i}-${location.j}`)
-  console.log(elCell)
-
-  elCell.innerHTML = 'value'
+  
+  elCell.innerHTML = value
+  // console.log(elCell.innerHTML)
 
 }
 

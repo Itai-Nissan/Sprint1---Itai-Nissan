@@ -44,7 +44,7 @@ function intinGame() {
 
     createMines(gBoard);
 
-    console.table(gBoard)
+    // console.table(gBoard)
     lifeCounter()
 
     renderBoard(gBoard, '.board-container')
@@ -99,9 +99,9 @@ function resetButton() {
 
     var elResetBtn = document.querySelector('.reset-button')
 
-    console.log(gLife);
+    // console.log(gLife);
     gLife = 2
-    console.log(gLife);
+    // console.log(gLife);
 
     if (elResetBtn.innerText === NOT_SMILING) {
         elResetBtn.innerText = SMILY
@@ -135,6 +135,9 @@ function lifeCounter() {
 
 
 function clickedCell(elBtn, i, j) {
+    // console.log(...elBtn.classList[1][5])
+    // console.log(...elBtn.classList[1][7])
+
 
     var elClickedCell = elBtn
     var currCellContent
@@ -142,27 +145,41 @@ function clickedCell(elBtn, i, j) {
     var elResetBtn = document.querySelector('.reset-button')
 
     if (elResetBtn.innerText === NOT_SMILING) return
-    // find and open empty negs
-    if (elResetBtn.innerText === EMPTY) {
-        setMinesNegsCount(mat, posI, posJ)
-    }
-
+   
+    if(!elClickedCell.classList.contains('not-clicked-Cell')) return
+    
+    // find and open empty negs    
     elClickedCell.classList.toggle('not-clicked-Cell')
     currCellContent = elClickedCell.innerText
     // console.log(currCellContent)
-
+    
     elClickedCell.innerText = currCellContent
 
+    var elBtnCurrPosI = [...elBtn.classList[1][5]]
+    // console.log(elBtnCurrPosI[0]);
+    var elBtnCurrPosJ = [...elBtn.classList[1][7]]
+    // console.log(elBtnCurrPosJ[0]);
+    
+    if (elBtn.innerText === EMPTY) {
+        console.log('hi');
+        // console.log(gBoard);
+        // console.log(i);
+        // console.log(j);
+        var emptyCellsToOpen = setMinesNegsCount(gBoard, elBtnCurrPosI[0], elBtnCurrPosJ[0])
+        console.log([emptyCellsToOpen])
+        elBtn.classList.remove('not-clicked-Cell')
+    }
+
     if (!elClickedCell.classList.contains('not-clicked-Cell') && elBtn.innerHTML === MINE) {
-        console.log(gLife);
+        // console.log(gLife);
         gLife--
         lifeCounter()
-        console.log(gLife);
+        // console.log(gLife);
         elBtn.innerHTML = FIRE
     }
 
     if (elBtn.innerHTML === FIRE && gLife === 0) {
-        console.log('Game Over');
+        // console.log('Game Over');
         gameOver()
         return
     }

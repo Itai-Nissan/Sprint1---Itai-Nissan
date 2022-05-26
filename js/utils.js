@@ -17,7 +17,7 @@ function renderBoard(mat, selector) {
   var elContainer = document.querySelector(selector)
   elContainer.innerHTML = strHTML
 
-  console.log(elContainer);
+  // console.log(elContainer);
 }
 
 // location such as: {i: 2, j: 7}
@@ -25,7 +25,7 @@ function renderCell(location, value) {
   var elCell = document.querySelectorAll(`.cell-${location.i}-${location.j}`)
 
   elCell.innerHTML = value
-  console.log(elCell.innerHTML)
+  // console.log(elCell.innerHTML)
 }
 
 function getRandomIntInclusive(min, max) {
@@ -111,19 +111,31 @@ function setMinesNegsCount(mat, posI, posJ) {
       if (j < 0 || j >= mat[i].length) continue
       if (i === posI && j === posJ) continue
 
-      
+
       if (mat[i][j] === numberOfMines) {
         mat[i][j] = numberOfMines + 1
       }
+          
       if (mat[i][j] === EMPTY && mat[i][j] !== MINE) {
         count++
         mat[i][j] = numberOfMines
       }
-      // console.log(count)
+      
+      if (mat[i][j] === EMPTY) {
+        console.log('hi');
+        console.log(mat[i][i]);
+        return mat
+      }
+        
+        // var elCell = document.querySelectorAll(`.cell-${location.i}-${location.j}`)
+        // elCell.classList.remove('.not-clicked-Cell')
+
+
+        // console.log(count)
+      }
     }
+    return
   }
-  return count
-}
 
 
 

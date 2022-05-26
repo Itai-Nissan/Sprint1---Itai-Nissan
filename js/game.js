@@ -1,9 +1,15 @@
 'use strict'
 
+
+
+
 const MINE = '💣'
+const FIRE = '🔥'
 const NUMBER = '0'
 const FLAG = '⛳'
 const EMPTY = ''
+
+var gLife = 2
 
 
 var gBoard = {
@@ -25,9 +31,9 @@ var gGame = {
     secsPassed: 0
 }
 
-
 function intinGame() {
     // console.log('Mine Sweeper')
+
 
     gBoard = buildBoard()
     // console.table(gBoard)
@@ -35,6 +41,7 @@ function intinGame() {
     // createPacman(gBoard);
     createMines(gBoard);
     // console.table(gBoard)
+    lifeCounter()
 
     renderBoard(gBoard, '.board-container')
     // gGame.isOn = true
@@ -63,33 +70,63 @@ function buildBoard() {
 // //     init()
 // // }
 
+function resetGame() {
+    intinGame()
+    var elGameOver = document.querySelector('.game-over')
+    elGameOver.style.display = 'none'
+
+}
+
+function gameOver() {
+    gGame.isOn = false
+    // console.log(elGameOver.innerText);
+
+    var elResetBtn = document.querySelector('.reset-button')
+    elResetBtn.innerText = '😲'
+
+
+}
+
+
+function lifeCounter() {
+
+    var life = gLife
+    var elLifeCount = document.querySelector('.game-pad h3 span')
+    elLifeCount.innerHTML = life
+    // elLifeCount.innerHTML = elLifeCount.innerHTML + gLife
+
+}
+
 
 function clickedCell(elBtn, i, j) {
 
 
-    console.log(elBtn.id);
-    console.log(elBtn.classList.contains('cell'));
-    console.log(elBtn.innerHTML);
-    // console.log(i);
-    // console.log(j);
-    var elCellClicked = elBtn
+    var elClickedCell = elBtn
     var currCellContent
-    // var elCellClicked = document.querySelector('.cell')
 
-    // console.log('Doing It!', elCellClicked)
-    // console.log('elCellClicked!', elCellClicked)
-    // console.log('gBoard', gBoard[0][2])
+    var elResetBtn = document.querySelector('.reset-button')
 
-    // elCellClicked.style.display = 'none'
-    // elCellClicked.style.backgroundColor = 'red'
-    elCellClicked.classList.toggle('clicked-Cell');
-    currCellContent = elCellClicked.innerText
+
+
+
+    if (elResetBtn.innerText === '😲') return
+
+    elClickedCell.classList.toggle('clicked-Cell')
+    currCellContent = elClickedCell.innerText
     // console.log(currCellContent)
-    elCellClicked.innerText = currCellContent
+    elClickedCell.innerText = currCellContent
+    if (!elClickedCell.classList.contains('clicked-Cell') && elBtn.innerHTML === MINE) {
+        console.log(gLife);
+        gLife--
+        lifeCounter()
+        console.log(gLife);
+        elBtn.innerHTML = FIRE
+    }
 
-    // elCellClicked.classList.add('clicked-Cell');
-    // elCellClicked.innerText = ''
-
-    // renderCell(location, value)
+    if (elBtn.innerHTML === FIRE && gLife === 0) {
+        console.log('Game Over');
+        gameOver()
+        return
+    }
 }
 

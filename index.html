@@ -10,10 +10,24 @@
 </head>
 
 <body onload="intinGame()">
-    <div class="board-container"></div>
+
+    <div class="game-over">
+        <h1>Game Over</h1>
+        <h3>Press Reset Button</h2>
+    </div>
+
+    <div class="game-pad">
+        <h3>Life Left: <span></span> </h3>
+        <button class="reset-button" onclick="resetGame()">😄</button>
+        <div class="board-container"></div>
+    </div>
+    <!-- <button id="button" oncontextmenu="event.preventDefault();">
+        Click here with your mouse...</button>
+    <p id="log"></p> -->
 
 
     <script src="js/utils.js"></script>
+    <script src="js/mouse-clicked"></script>
     <script src="js/mines.js"></script>
     <script src="js/game.js"></script>
 

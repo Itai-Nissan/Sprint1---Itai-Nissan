@@ -2,19 +2,74 @@
     box-sizing: border-box;
 }
 
+body{
+    background-color: #3679fe8f;
+
+}
+
+.game-pad{
+    max-width: 400px;
+    max-height: 400px;
+    /* min-width: 150px; */
+    /* min-height: 150px; */
+
+    border: #3679fe 3px solid;
+    background-color: #5ad64155;
+
+    border-radius: 10%;
+    margin-left: 30%;
+    margin-top: 5%;
+
+
+}
+
+.game-pad h3{
+    width: 100px;
+    margin-bottom: 0px;
+    margin-left: 15px;
+}
+
+.game-over{
+    position: absolute;
+    text-align: center;
+    width:415px;
+    min-height: 100px;
+    background-color: coral;
+    display: none;
+    margin-left: 4%;
+}
+
+.reset-button {
+    max-width: 50px;
+    max-height: 50px;
+    min-width: 50px;
+    min-height: 50px;
+    /* text-align: center; */
+    font-size: 1.5em;
+    border-radius: 10%;
+
+    margin-bottom: 16px;
+    margin-top: 6px;
+    margin-left: 45%;
+}
+
+.board-container{
+    padding-bottom: 20px;
+}
 
 .cell {
     max-width: 100px;
     max-height: 100px;
-    min-width: 100px;
-    min-height: 100px;
+    min-width: 50px;
+    min-height: 50px;
     text-align: center;
     font-size: 1.5em;
 }
 
 .cell:hover{
-    border: #feb236 3px solid;
-    background-color: #41d68b;
+    border: #fef136 3px solid;
+    /* background-color: #41d68b; */
+    /* background-color: rgba(33, 111, 190, 0.667); */
     height: 60px;
     width: 60px;
     border-radius: 6px;
@@ -27,14 +82,15 @@ table {
 }
 
 td {
-    border: #3679fe 3px solid;
-    background-color: #d69341;
+    border: #0156ffc5 3px solid;
+    background-color: #c8d698;
     height: 60px;
     width: 60px;
     border-radius: 6px;
 }
 
 .clicked-Cell{
-    background-color: red;
-    
+    border: #57ad6c92 3px solid;
+    background-color: #296873;
+        
 }

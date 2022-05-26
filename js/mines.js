@@ -19,10 +19,11 @@ function createMines(board) {
             currCellContents: EMPTY,
         }
         
-        // console.log(mine.location)
+        console.log(mine.location)
         createMine(board, mine.location)
+
         setMinesNegsCount(board, mine.location)
-    }    
+    }
 
     return board
 }

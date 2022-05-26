@@ -8,8 +8,8 @@ function renderBoard(mat, selector) {
     for (var j = 0; j < mat[0].length; j++) {
       var cell = mat[i][j]
       var className = 'cell cell-' + i + '-' + j
-      strHTML += '<td onClick="clickedCell(this)" id=' + i + '-' + j + '' + ' class="' + className + ' clicked-Cell"> ' + cell + ' </td>'
-      renderCell({ i: i, j: j }, cell)
+      strHTML += '<td onClick="clickedCell(this)" id=' + i + '-' + j + '' + ' class="' + className + ' not-clicked-Cell"> ' + cell + ' </td>'
+      // renderCell({ i: i, j: j }, cell)
     }
     strHTML += '</tr>'
   }
@@ -17,7 +17,7 @@ function renderBoard(mat, selector) {
   var elContainer = document.querySelector(selector)
   elContainer.innerHTML = strHTML
 
-  // console.log(elContainer);
+  console.log(elContainer);
 }
 
 // location such as: {i: 2, j: 7}
@@ -25,8 +25,7 @@ function renderCell(location, value) {
   var elCell = document.querySelectorAll(`.cell-${location.i}-${location.j}`)
 
   elCell.innerHTML = value
-  // console.log(elCell.innerHTML)
-
+  console.log(elCell.innerHTML)
 }
 
 function getRandomIntInclusive(min, max) {
@@ -96,7 +95,7 @@ function createBox() {
   elBox.innerHTML = strHTML
 }
 
-function setMinesNegsCount(mat, pos) {
+function setMinesNegsCount(mat, posI, posJ) {
   // console.log(mat);
   // console.log(pos);
 
@@ -105,12 +104,12 @@ function setMinesNegsCount(mat, pos) {
   // console.log(mat);
   // console.log(pos.location.i);
 
-  for (var i = pos.i - 1; i <= pos.i + 1; i++) {
+  for (var i = posI - 1; i <= posI + 1; i++) {
     if (i < 0 || i >= mat.length) continue
 
-    for (var j = pos.j - 1; j <= pos.j + 1; j++) {
+    for (var j = posJ - 1; j <= posJ + 1; j++) {
       if (j < 0 || j >= mat[i].length) continue
-      if (i === pos.i && j === pos.j) continue
+      if (i === posI && j === posJ) continue
 
       
       if (mat[i][j] === numberOfMines) {

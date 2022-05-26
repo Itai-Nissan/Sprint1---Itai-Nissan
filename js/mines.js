@@ -16,13 +16,12 @@ function createMines(board) {
     for (var i = 0; i < gLevel.MINES; i++) {
         var mine = {
             location: { i: getRandomIntInc(0, board.length - 1), j: getRandomIntInc(0, board.length - 1) },
-            currCellContents: EMPTY,
-        }
-        
-        console.log(mine.location)
+        }        
+
+        // console.log(mine.location)
         createMine(board, mine.location)
 
-        setMinesNegsCount(board, mine.location)
+        setMinesNegsCount(board, mine.location.i, mine.location.j)
     }
 
     return board

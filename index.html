@@ -11,14 +11,16 @@
 
 <body onload="intinGame()">
 
-    <div class="game-over">
-        <h1>Game Over</h1>
-        <h3>Press Reset Button</h2>
+    <div class="set-level">
+        <h5> Chose Your Level</h5>
+        <button onclick="setLevel(4)">Easy (16)</button>
+        <button onclick="setLevel(8)">Hard (64)</button>
+        <button onclick="setLevel(12)">Expert(144)</button>
     </div>
 
     <div class="game-pad">
         <h3>Life Left: <span></span> </h3>
-        <button class="reset-button" onclick="resetGame()">😄</button>
+        <button class="reset-button" onclick="resetGame()">😃</button>
         <div class="board-container"></div>
     </div>
     <!-- <button id="button" oncontextmenu="event.preventDefault();">

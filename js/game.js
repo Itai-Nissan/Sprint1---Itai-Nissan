@@ -9,12 +9,16 @@ const NUMBER = '0'
 const FLAG = '⛳'
 const EMPTY = ''
 
+const SMILY = '😃'
+const NOT_SMILING = '😞'
+
+
 var gLife = 2
 
 
 var gBoard = {
     minesAroundCount: 0,
-    isShown: true,
+    isShown: false,
     isMine: false,
     isMarked: true
 }
@@ -38,13 +42,13 @@ function intinGame() {
     gBoard = buildBoard()
     // console.table(gBoard)
 
-    // createPacman(gBoard);
     createMines(gBoard);
-    // console.table(gBoard)
+
+    console.table(gBoard)
     lifeCounter()
 
     renderBoard(gBoard, '.board-container')
-    // gGame.isOn = true
+    gGame.isOn = true
 }
 
 
@@ -64,27 +68,60 @@ function buildBoard() {
     return board
 }
 
-// // function setLevel(boardSize) {
-// //     // console.log('boardSize:', boardSize)
-// //     gLevel.SIZE = boardSize
-// //     init()
-// // }
+function setLevel(boardSize) {
+    // console.log('boardSize:', boardSize)
+    var elSetLevelBtn = document.querySelector('.setLevel')
+
+    gLevel.SIZE = boardSize
+    if(boardSize === 4){
+        gLevel = {
+            SIZE: 4,
+            MINES: 2
+        }
+    }
+    else if(boardSize === 8){
+        gLevel = {
+            SIZE: 8,
+            MINES: 4
+        }
+    }
+    else if(boardSize === 12){
+        gLevel = {
+            SIZE: 12,
+            MINES: 8
+        }
+    }
+    
+    intinGame()
+}
+
+function resetButton() {
+
+    var elResetBtn = document.querySelector('.reset-button')
+
+    console.log(gLife);
+    gLife = 2
+    console.log(gLife);
+
+    if (elResetBtn.innerText === NOT_SMILING) {
+        elResetBtn.innerText = SMILY
+
+    }
+
+}
 
 function resetGame() {
+    resetButton()
     intinGame()
-    var elGameOver = document.querySelector('.game-over')
-    elGameOver.style.display = 'none'
-
 }
 
 function gameOver() {
     gGame.isOn = false
+
     // console.log(elGameOver.innerText);
 
     var elResetBtn = document.querySelector('.reset-button')
-    elResetBtn.innerText = '😲'
-
-
+    elResetBtn.innerText = NOT_SMILING
 }
 
 
@@ -94,28 +131,29 @@ function lifeCounter() {
     var elLifeCount = document.querySelector('.game-pad h3 span')
     elLifeCount.innerHTML = life
     // elLifeCount.innerHTML = elLifeCount.innerHTML + gLife
-
 }
 
 
 function clickedCell(elBtn, i, j) {
-
 
     var elClickedCell = elBtn
     var currCellContent
 
     var elResetBtn = document.querySelector('.reset-button')
 
+    if (elResetBtn.innerText === NOT_SMILING) return
+    // find and open empty negs
+    if (elResetBtn.innerText === EMPTY) {
+        setMinesNegsCount(mat, posI, posJ)
+    }
 
-
-
-    if (elResetBtn.innerText === '😲') return
-
-    elClickedCell.classList.toggle('clicked-Cell')
+    elClickedCell.classList.toggle('not-clicked-Cell')
     currCellContent = elClickedCell.innerText
     // console.log(currCellContent)
+
     elClickedCell.innerText = currCellContent
-    if (!elClickedCell.classList.contains('clicked-Cell') && elBtn.innerHTML === MINE) {
+
+    if (!elClickedCell.classList.contains('not-clicked-Cell') && elBtn.innerHTML === MINE) {
         console.log(gLife);
         gLife--
         lifeCounter()

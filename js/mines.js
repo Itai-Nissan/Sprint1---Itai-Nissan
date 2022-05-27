@@ -13,6 +13,7 @@ function createMines(board) {
     
     var mine
     
+    console.log(gLevel.MINES);
     for (var i = 0; i < gLevel.MINES; i++) {
         var mine = {
             location: { i: getRandomIntInc(0, board.length - 1), j: getRandomIntInc(0, board.length - 1) },

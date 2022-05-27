@@ -115,28 +115,49 @@ function setMinesNegsCount(mat, posI, posJ) {
       if (mat[i][j] === numberOfMines) {
         mat[i][j] = numberOfMines + 1
       }
-          
+
       if (mat[i][j] === EMPTY && mat[i][j] !== MINE) {
         count++
         mat[i][j] = numberOfMines
       }
-      
+
+
+      // var elCell = document.querySelectorAll(`.cell-${location.i}-${location.j}`)
+      // elCell.classList.remove('.not-clicked-Cell')
+
+
+      // console.log(count)
+    }
+  }
+  return
+}
+
+
+
+function revelEmptyNegs(mat, posI, posJ, elBtn) {
+  // console.log([...elBtn.classList[1][5]])
+  // console.log([...elBtn.classList[1][7]])
+  
+  
+  for (var i = posI - 1; i <= posI + 1; i++) {
+    if (i < 0 || i >= mat.length) continue
+    
+    for (var j = posJ - 1; j <= posJ + 1; j++) {
+
+      if (j < 0 || j >= mat[i].length) continue
+
+      if (i === posI && j === posJ) continue     
+     
       if (mat[i][j] === EMPTY) {
-        console.log('hi');
-        console.log(mat[i][i]);
-        return mat
-      }
-        
-        // var elCell = document.querySelectorAll(`.cell-${location.i}-${location.j}`)
-        // elCell.classList.remove('.not-clicked-Cell')
+        var cellsToRevel = '.cell-' + i + '-' + j
+        console.log(cellsToRevel)
+        // console.log('cell-' + i + '-' + j)
+        var elCellToRevel = document.querySelector(cellsToRevel)
+        console.log(elCellToRevel)
+        elCellToRevel.classList.remove('not-clicked-Cell')
 
-
-        // console.log(count)
       }
     }
-    return
   }
-
-
-
+}
 

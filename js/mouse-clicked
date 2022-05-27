@@ -1,3 +1,9 @@
+window.addEventListener('contextmenu', (event) => {
+    event.preventDefault()
+    // console.log(event);
+})
+
+
 // $("#myId").mousedown(function(ev){
 //     if(ev.which == 3)
 //     {
@@ -31,10 +37,6 @@
 // }
 // }
 
-window.addEventListener('contextmenu', (event) => {
-    event.preventDefault()
-    // console.log(event);
-})
 
 // document.body.onclick = function (e) {
 //     var isRightMB;

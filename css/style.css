@@ -93,6 +93,7 @@ td {
 
 .set-level {
     text-align: center;
+
 }
 
 .set-level h5{
@@ -111,7 +112,6 @@ td {
     height: 48px;
     max-width: 300px;
     font-size: 18px;
-    text-align: center;
     
     text-shadow: 0 1px 0 rgb(0 0 0 / 40%);
     transition: box-shadow 0.15s ease, transform 0.15s ease;
@@ -132,6 +132,7 @@ td {
     border-radius: 6px;
     color: #fff;
     height: 48px;
+    max-width: 140px;
     font-size: 18px;
     text-shadow: 0 1px 0 rgb(0 0 0 / 40%);
     transition: box-shadow 0.15s ease, transform 0.15s ease;

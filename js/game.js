@@ -73,25 +73,26 @@ function setLevel(boardSize) {
     var elSetLevelBtn = document.querySelector('.setLevel')
 
     gLevel.SIZE = boardSize
-    if(boardSize === 4){
+    if (boardSize === 4) {
         gLevel = {
             SIZE: 4,
             MINES: 2
         }
     }
-    else if(boardSize === 8){
+    else if (boardSize === 8) {
         gLevel = {
             SIZE: 8,
             MINES: 4
         }
     }
-    else if(boardSize === 12){
+    else if (boardSize === 12) {
         gLevel = {
             SIZE: 12,
             MINES: 8
         }
     }
-    
+    // console.log(gLevel);
+
     intinGame()
 }
 
@@ -134,42 +135,55 @@ function lifeCounter() {
 }
 
 
+// function checkIfWon(elBtn) {
+//     for (var i = 0; i < gBoard.length; i++) {
+//         for (var j = 0; j < gBoard[i].length; j++) {
+//             if(elBtn[i][j].classList.contain('not-clicked-Cell') && gLife !== 0){
+//                 win()
+//             }
+//         }
+//     }
+// }
+
+// function win(){
+//     console.log('Yesh');
+// }
+
+
 function clickedCell(elBtn, i, j) {
     // console.log(...elBtn.classList[1][5])
-    // console.log(...elBtn.classList[1][7])
-
+    // console.log(...elBtn.classList[1][7])  
 
     var elClickedCell = elBtn
+    // console.log(elClickedCell);
     var currCellContent
+
+    // checkIfWon(elBtn)
 
     var elResetBtn = document.querySelector('.reset-button')
 
+
     if (elResetBtn.innerText === NOT_SMILING) return
-   
-    if(!elClickedCell.classList.contains('not-clicked-Cell')) return
-    
-    // find and open empty negs    
+
+    if (!elClickedCell.classList.contains('not-clicked-Cell')) return
+
+    // find and open empty negs    ***
     elClickedCell.classList.toggle('not-clicked-Cell')
     currCellContent = elClickedCell.innerText
     // console.log(currCellContent)
     
     elClickedCell.innerText = currCellContent
-
-    var elBtnCurrPosI = [...elBtn.classList[1][5]]
-    // console.log(elBtnCurrPosI[0]);
-    var elBtnCurrPosJ = [...elBtn.classList[1][7]]
-    // console.log(elBtnCurrPosJ[0]);
     
-    if (elBtn.innerText === EMPTY) {
-        console.log('hi');
-        // console.log(gBoard);
-        // console.log(i);
-        // console.log(j);
-        var emptyCellsToOpen = setMinesNegsCount(gBoard, elBtnCurrPosI[0], elBtnCurrPosJ[0])
-        console.log([emptyCellsToOpen])
-        elBtn.classList.remove('not-clicked-Cell')
-    }
+    // console.log(elBtnCurrPosI[0]);
+    // console.log(elBtnCurrPosJ[0]);
 
+    if (elBtn.innerText === EMPTY) {
+        var elBtnCurrPosI = [...elBtn.classList[1][5]]
+        var elBtnCurrPosJ = [...elBtn.classList[1][7]]
+        var emptyCellsToOpen = revelEmptyNegs(gBoard, elBtnCurrPosI[0], elBtnCurrPosJ[0], elClickedCell)
+        // console.log(emptyCellsToOpen)
+    }   
+        
     if (!elClickedCell.classList.contains('not-clicked-Cell') && elBtn.innerHTML === MINE) {
         // console.log(gLife);
         gLife--
@@ -182,6 +196,6 @@ function clickedCell(elBtn, i, j) {
         // console.log('Game Over');
         gameOver()
         return
-    }
+    }    
 }
 

@@ -14,6 +14,7 @@ const NOT_SMILING = '😞'
 
 
 var gLife = 2
+var numberOfCellsOpened = 0
 
 
 var gBoard = {
@@ -135,26 +136,14 @@ function lifeCounter() {
 }
 
 
-// function checkIfWon(elBtn) {
-//     for (var i = 0; i < gBoard.length; i++) {
-//         for (var j = 0; j < gBoard[i].length; j++) {
-//             if(elBtn[i][j].classList.contain('not-clicked-Cell') && gLife !== 0){
-//                 win()
-//             }
-//         }
-//     }
-// }
-
-// function win(){
-//     console.log('Yesh');
-// }
+var elClickedCell
 
 
 function clickedCell(elBtn, i, j) {
     // console.log(...elBtn.classList[1][5])
-    // console.log(...elBtn.classList[1][7])  
+    // console.log(...elBtn.classList[1][7])
 
-    var elClickedCell = elBtn
+    elClickedCell = elBtn
     // console.log(elClickedCell);
     var currCellContent
 
@@ -162,6 +151,9 @@ function clickedCell(elBtn, i, j) {
 
     var elResetBtn = document.querySelector('.reset-button')
 
+    // count opened Cells
+    // numberOfCellsOpened++
+    // console.log(numberOfCellsOpened);
 
     if (elResetBtn.innerText === NOT_SMILING) return
 
@@ -169,11 +161,13 @@ function clickedCell(elBtn, i, j) {
 
     // find and open empty negs    ***
     elClickedCell.classList.toggle('not-clicked-Cell')
+    if(elClickedCell.classList.toggle) 
+
     currCellContent = elClickedCell.innerText
     // console.log(currCellContent)
-    
+
     elClickedCell.innerText = currCellContent
-    
+
     // console.log(elBtnCurrPosI[0]);
     // console.log(elBtnCurrPosJ[0]);
 
@@ -182,8 +176,8 @@ function clickedCell(elBtn, i, j) {
         var elBtnCurrPosJ = [...elBtn.classList[1][7]]
         var emptyCellsToOpen = revelEmptyNegs(gBoard, elBtnCurrPosI[0], elBtnCurrPosJ[0], elClickedCell)
         // console.log(emptyCellsToOpen)
-    }   
-        
+    }
+
     if (!elClickedCell.classList.contains('not-clicked-Cell') && elBtn.innerHTML === MINE) {
         // console.log(gLife);
         gLife--
@@ -196,6 +190,36 @@ function clickedCell(elBtn, i, j) {
         // console.log('Game Over');
         gameOver()
         return
-    }    
+    }
+
+    checkIfWon(elBtn)
+
 }
+
+function checkIfWon() {
+
+    // console.log(gLife);
+    // console.log(elBtn.classList.contains('.not-clicked-Cell'));
+    // console.log(gBoard);
+
+    if(numberOfCellsOpened === gLevel.SIZE * gLevel.SIZE){
+        console.log('Won');
+    }
+
+//     for (var i = 0; i < gBoard.length; i++) {
+//         for (var j = 0; j < gBoard[i].length; j++) {
+//             console.log(elBtn.classList.contains('.not-clicked-Cell'));
+//             // if (!elBtn[i][j].classList.contains('.not-clicked-Cell')/* && gLife !== 0*/) {
+//             //     // win()
+//             //     console.log('opened cell');
+//             //     console.log(gBoard[i][j]);
+//             // }
+//         }
+//     }
+}
+
+// function win(){
+//     console.log('Yesh');
+// }
+
 

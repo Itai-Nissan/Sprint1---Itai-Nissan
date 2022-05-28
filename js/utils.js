@@ -117,15 +117,14 @@ function setMinesNegsCount(mat, posI, posJ) {
       }
 
       if (mat[i][j] === EMPTY && mat[i][j] !== MINE) {
-        count++
         mat[i][j] = numberOfMines
       }
-
-
+      
+      
       // var elCell = document.querySelectorAll(`.cell-${location.i}-${location.j}`)
       // elCell.classList.remove('.not-clicked-Cell')
-
-
+      
+      
       // console.log(count)
     }
   }
@@ -150,10 +149,10 @@ function revelEmptyNegs(mat, posI, posJ, elBtn) {
      
       if (mat[i][j] === EMPTY) {
         var cellsToRevel = '.cell-' + i + '-' + j
-        console.log(cellsToRevel)
+        // console.log(cellsToRevel)
         // console.log('cell-' + i + '-' + j)
         var elCellToRevel = document.querySelector(cellsToRevel)
-        console.log(elCellToRevel)
+        // console.log(elCellToRevel)
         elCellToRevel.classList.remove('not-clicked-Cell')
 
       }

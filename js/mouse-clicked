@@ -1,10 +1,9 @@
-window.addEventListener('contextmenu', (event) => {
-    event.preventDefault()
-    // console.log(event);
-})
 
+// window.addEventListener('contextmenu', (event) => {
+//     event.preventDefault()
+//     })
 
-// $("#myId").mousedown(function(ev){
+// $("#0-0").mousedown(function(ev){
 //     if(ev.which == 3)
 //     {
 //           alert("Right mouse button clicked on element with id myId");
@@ -14,9 +13,9 @@ window.addEventListener('contextmenu', (event) => {
 
 // function MouseClick(button) {
 
-// let button = document.querySelector('#button');
+// var button = document.querySelector('#button');
 // let log = document.querySelector('#log');
-// button.addEventListener('mouseup', logMouseButton);
+// button.addEventListener('.#button', logMouseButton);
 
 // function logMouseButton(e) {
 //     if (typeof e === 'object') {
@@ -29,13 +28,14 @@ window.addEventListener('contextmenu', (event) => {
 //                 break;
 //             case 2:
 //                 log.textContent = 'Right button clicked.';
+//                 console.log(button);
 //                 break;
 //             default:
-//                 log.textContent = `Unknown button code: ${e.button}`;
+//                 // log.textContent = `Unknown button code: ${e.button}`;
 //         }
 //     }
 // }
-// }
+
 
 
 // document.body.onclick = function (e) {

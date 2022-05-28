@@ -1,7 +1,7 @@
 
-// window.addEventListener('contextmenu', (event) => {
-//     event.preventDefault()
-//     })
+window.addEventListener('contextmenu', (event) => {
+    event.preventDefault()
+    })
 
 // $("#0-0").mousedown(function(ev){
 //     if(ev.which == 3)

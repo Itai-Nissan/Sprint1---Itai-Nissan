@@ -26,8 +26,7 @@ body {
 
 .game-pad h3 {
     width: 100px;
-    margin-bottom: 0px;
-    margin-left: 15px;
+    margin-left: 35px;
     text-shadow: 0 1px 0 rgb(255, 255, 255);
 
 }
@@ -99,7 +98,9 @@ td {
 }
 
 .set-level {
-    text-align: center;
+    position: relative;
+    align-items: center;
+    /* margin-left: 35% */
 
 }
 
@@ -110,7 +111,7 @@ td {
     will-change: box-shadow, transform;
     background:radial-gradient(100% 100% at 100% 0%, #89E5FF 0%, #54bbff 100%);
     box-shadow: 0px 2px 4px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px rgb(58 65 111 / 50%);
-    margin-left: 35%;
+    margin-left: 32%;
     margin-top: 5%;
     padding: 0 32px;
     
@@ -121,15 +122,21 @@ td {
     font-size: 18px;
     
     text-shadow: 0 1px 0 rgb(0 0 0 / 40%);
+    text-align: center;
     transition: box-shadow 0.15s ease, transform 0.15s ease;
 
 }
 
 
-.set-level button {
+.buttons {
+    margin-left: 30%;
 
-    /* display: inline-block; */
-    /* outline: 0; */
+}
+
+.buttons button{
+
+    display: inline-block;
+    outline: 0;
     border: 0;
     cursor: pointer;
     will-change: box-shadow, transform;
